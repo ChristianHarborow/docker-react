@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t christianharborow/docker-react -f Dockerfile.dev .
+
+script:
+  # - docker run christianharborow/docker-react npm run test -- --coverage
+  - docker run -e CI=true christianharborow/docker-react npm run test
